@@ -9,3 +9,5 @@ captures/
 english-upload-key.jks
 *.jks
 !debug.keystore
+__pycache__/
+*.pyc
