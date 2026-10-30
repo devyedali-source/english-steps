@@ -9,6 +9,11 @@ import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
+import androidx.compose.ui.unit.sp
+import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.graphics.Color
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -90,8 +95,18 @@ class MainActivity : ComponentActivity() {
         setContent {
             ThemeWrap {
                 CompositionLocalProvider(LocalLayoutDirection provides if (I18n.isRtl) LayoutDirection.Rtl else LayoutDirection.Ltr) {
-                    Box(Modifier.fillMaxSize().background(Palette.Background).systemBarsPadding()) {
-                        AppNav(start)
+                    Column(Modifier.fillMaxSize().background(Palette.Background).systemBarsPadding()) {
+                        Box(Modifier.weight(1f).fillMaxWidth()) {
+                            AppNav(start)
+                        }
+                        // حقوق الملكية تظهر أسفل كل الواجهات
+                        Text(
+                            "© 2026 Elmoctar Elyedali. All rights reserved.",
+                            modifier = Modifier.fillMaxWidth().background(Color.White).padding(vertical = 3.dp),
+                            textAlign = TextAlign.Center,
+                            fontSize = 10.sp,
+                            color = Palette.Muted,
+                        )
                     }
                 }
             }
